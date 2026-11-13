@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopEase — Product Finder</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="topbar"><h1>🛍️ ShopEase</h1></header>
+
+  <main class="layout">
+
+    <!-- ========== LEFT: STICKY FILTER SIDEBAR ========== -->
+    <aside class="sidebar">
+      <h2>Filters</h2>
+
+      <!-- 1) Category checklist -->
+      <section class="filter-group">
+        <h3>Category</h3>
+        <label><input type="checkbox" class="category-box" value="Electronics" /> Electronics</label>
+        <label><input type="checkbox" class="category-box" value="Apparel" /> Apparel</label>
+        <label><input type="checkbox" class="category-box" value="Footwear" /> Footwear</label>
+      </section>
+
+      <!-- 2) Dual-point price slider -->
+      <section class="filter-group">
+        <h3>Price Range</h3>
+        <div class="price-labels">
+          <span id="minLabel">₹0</span>
+          <span id="maxLabel">₹50000</span>
+        </div>
+        <div class="range-slider">
+          <input type="range" id="minPrice" min="0" max="50000" step="100" value="0" />
+          <input type="range" id="maxPrice" min="0" max="50000" step="100" value="50000" />
+        </div>
+      </section>
+
+      <!-- 3) Minimum star rating radios -->
+      <section class="filter-group">
+        <h3>Minimum Rating</h3>
+        <label><input type="radio" name="rating" class="rating-radio" value="1" /> ★ 1 & up</label>
+        <label><input type="radio" name="rating" class="rating-radio" value="2" /> ★★ 2 & up</label>
+        <label><input type="radio" name="rating" class="rating-radio" value="3" /> ★★★ 3 & up</label>
+        <label><input type="radio" name="rating" class="rating-radio" value="4" /> ★★★★ 4 & up</label>
+        <label><input type="radio" name="rating" class="rating-radio" value="5" /> ★★★★★ 5 only</label>
+      </section>
+
+      <button id="resetBtn" class="reset-btn">Clear All Filters</button>
+    </aside>
+
+    <!-- ========== RIGHT: PRODUCT GRID ========== -->
+    <section class="catalog">
+
+      <!-- Sort dropdown sits at TOP RIGHT of the grid -->
+      <div class="catalog-top">
+        <span id="countLabel"></span>
+        <select id="sortBy">
+          <option value="default">Sort by: Default</option>
+          <option value="priceLowToHigh">Price: Low to High</option>
+          <option value="topRated">Top Rated First</option>
+        </select>
+      </div>
+
+      <div class="grid" id="productGrid"></div>
+
+      <!-- shown only when zero products match -->
+      <div class="empty-state" id="emptyState" hidden>
+        <p>😕 No items match your criteria.</p>
+        <button id="resetBtn2" class="reset-btn">Reset filters</button>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
